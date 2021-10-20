@@ -1,0 +1,21 @@
+import React, { useState } from "react";
+import "./App.css";
+import Login from "./Components/Login";
+
+function App() {
+  const [flag, setFlag] = useState(false);
+  const handleFlag = () => {
+    setFlag(!flag);
+  };
+  return (
+    <>
+      <div className={`container ${flag ? "sign-up-mode" : ""}`}>
+        <div className="forms-container">
+          <Login handleFlag={handleFlag} />
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default App;
