@@ -15,9 +15,6 @@ const Login = () => {
   const { current } = useSelector((state) => state.user);
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      return alert("dau buoi ");
-    }
     dispatch(loginInitial(email, password));
   };
   const handleChange = (e) => {
@@ -46,6 +43,7 @@ const Login = () => {
             name="email"
             id="email"
             value={email}
+            required
             onChange={handleChange}
           />
         </div>
@@ -57,6 +55,7 @@ const Login = () => {
             name="password"
             id="password"
             value={password}
+            required
             onChange={handleChange}
           />
         </div>

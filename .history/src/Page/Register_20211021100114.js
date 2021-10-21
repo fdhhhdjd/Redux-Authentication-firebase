@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import { loginInitial } from "../Redux/Actions";
-import "../Styles/authentication.css";
-import LoginGoogleFb from "./LoginGoogleFb";
-const Login = () => {
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+
+const Register = () => {
   const [state, setState] = useState({
+    displayName: "",
     email: "",
     password: "",
+    passwordConfirm: "",
   });
-  const { email, password } = state;
-  const history = useHistory();
+  const { displayName, email, password, passwordConfirm } = state;
   const dispatch = useDispatch();
   const { current } = useSelector((state) => state.user);
+  const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      return alert("dau buoi ");
+    if (password !== passwordConfirm) {
+      return alert("con cac mat khau sai ");
     }
-    dispatch(loginInitial(email, password));
   };
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -33,15 +33,25 @@ const Login = () => {
     <>
       <form
         actions=""
-        className="sign-in-form form-main"
+        className="sign-up-form form-main"
         onSubmit={handleSubmit}
       >
-        <h2 className="title">Sign in</h2>
-        <LoginGoogleFb />
+        <h2 className="title">Sign up</h2>
         <div className="input-field">
           <i className="fas fa-user" />
           <input
             type="text"
+            placeholder="Full Name"
+            name="displayName"
+            id="displayName"
+            value={displayName}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="input-field">
+          <i className="fas fa-envelope" />
+          <input
+            type="email"
             placeholder="Email Address"
             name="email"
             id="email"
@@ -60,29 +70,21 @@ const Login = () => {
             onChange={handleChange}
           />
         </div>
-        <input
-          type="submit"
-          defaultValue="Login"
-          name="signin"
-          className="btn solid"
-        />
-        <p
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "20px",
-          }}
-        >
-          <Link to="/forget">
-            <a href="" style={{ color: "#4590ef" }}>
-              Forgot Password?
-            </a>
-          </Link>
-        </p>
+        <div className="input-field">
+          <i className="fas fa-lock" />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            name="passwordConfirm"
+            id="passwordConfirm"
+            value={passwordConfirm}
+            onChange={handleChange}
+          />
+        </div>
+        <input type="submit" className="btn" name="signup" />
       </form>
     </>
   );
 };
 
-export default Login;
+export default Register;

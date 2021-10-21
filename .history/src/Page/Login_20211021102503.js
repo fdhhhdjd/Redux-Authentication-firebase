@@ -46,6 +46,7 @@ const Login = () => {
             name="email"
             id="email"
             value={email}
+            required
             onChange={handleChange}
           />
         </div>
@@ -57,6 +58,7 @@ const Login = () => {
             name="password"
             id="password"
             value={password}
+            required
             onChange={handleChange}
           />
         </div>

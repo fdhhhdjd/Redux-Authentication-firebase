@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import { loginInitial } from "../Redux/Actions";
+import { Link } from "react-router-dom";
 import "../Styles/authentication.css";
 import LoginGoogleFb from "./LoginGoogleFb";
 const Login = () => {
@@ -15,10 +14,6 @@ const Login = () => {
   const { current } = useSelector((state) => state.user);
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      return alert("dau buoi ");
-    }
-    dispatch(loginInitial(email, password));
   };
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -46,6 +41,7 @@ const Login = () => {
             name="email"
             id="email"
             value={email}
+            required
             onChange={handleChange}
           />
         </div>
@@ -57,6 +53,7 @@ const Login = () => {
             name="password"
             id="password"
             value={password}
+            required
             onChange={handleChange}
           />
         </div>

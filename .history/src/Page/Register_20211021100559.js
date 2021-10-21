@@ -31,7 +31,7 @@ const Register = () => {
     if (current) {
       history.push("/");
     }
-  }, [current, history]);
+  }, [current]);
   return (
     <>
       <form

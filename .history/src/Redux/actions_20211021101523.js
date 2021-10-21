@@ -36,14 +36,3 @@ export const registerInitial = (displayName, email, password) => {
       .catch((error) => dispatch(registerFail(error.message)));
   };
 };
-export const loginInitial = (email, password) => {
-  return function (dispatch) {
-    dispatch(loginStart());
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then(({ user }) => {
-        dispatch(loginSuccess(user));
-      })
-      .catch((error) => dispatch(loginFail(error.message)));
-  };
-};

@@ -21,7 +21,7 @@ const Register = () => {
       return alert("con cac mat khau sai ");
     }
     dispatch(registerInitial(displayName, email, password));
-    setState({ email: "", displayName: "", password: "", passwordConfirm: "" });
+    setState({ email: "", displayName: "", password: "" });
   };
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -31,7 +31,7 @@ const Register = () => {
     if (current) {
       history.push("/");
     }
-  }, [current, history]);
+  }, [current]);
   return (
     <>
       <form

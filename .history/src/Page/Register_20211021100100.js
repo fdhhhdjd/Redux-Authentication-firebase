@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { registerInitial } from "../Redux/Actions";
 
 const Register = () => {
   const [state, setState] = useState({
@@ -20,18 +19,14 @@ const Register = () => {
     if (password !== passwordConfirm) {
       return alert("con cac mat khau sai ");
     }
-    dispatch(registerInitial(displayName, email, password));
-    setState({ email: "", displayName: "", password: "", passwordConfirm: "" });
   };
   const handleChange = (e) => {
     let { name, value } = e.target;
     setState({ ...state, [name]: value });
   };
   useEffect(() => {
-    if (current) {
-      history.push("/");
-    }
-  }, [current, history]);
+    history.push("/");
+  }, [current]);
   return (
     <>
       <form
