@@ -1,0 +1,54 @@
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
+import Lottie from "react-lottie";
+import * as loading from "../Json/Loading.json";
+import * as done from "../Json/done.json";
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: loading.default,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
+
+const defaultOptions2 = {
+  loop: false,
+  autoplay: true,
+  animationData: done.default,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
+const LoadingRedirect = () => {
+  const [count, setCount] = useState(5);
+  const [count1, setCount1] = useState(2);
+  const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
+  const history = useHistory();
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLoading(true);
+      setCount((current) => --current);
+    }, 1000);
+    const set = (interval = setCount(() => {
+      setCount1((a) => --a);
+    }, [1000]));
+    count === 0 && history.push("./login");
+    return () => clearInterval(interval, set);
+  }, [count, history]);
+  return (
+    <div>
+      <>
+        <h1>Bạn hãy chờ trong {count}s</h1>
+        {!loading ? (
+          <Lottie options={defaultOptions} height={120} width={120} />
+        ) : (
+          <Lottie options={defaultOptions2} height={120} width={120} />
+        )}
+      </>
+    </div>
+  );
+};
+
+export default LoadingRedirect;
