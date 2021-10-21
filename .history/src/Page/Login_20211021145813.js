@@ -1,31 +1,23 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { loginInitial } from "../Redux/Actions";
 import "../Styles/authentication.css";
 import LoginGoogleFb from "./LoginGoogleFb";
-import { useForm } from "react-hook-form";
 const Login = () => {
   const [state, setState] = useState({
     email: "",
     password: "",
   });
-  const [a, setA] = useState("");
   const { email, password } = state;
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    watch,
-  } = useForm();
-  const passwords = useRef({});
-  passwords.current = watch("password", "");
   const history = useHistory();
   const dispatch = useDispatch();
   const { current } = useSelector((state) => state.user);
-
-  const handleSubmitForm = (data, e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    if (!email || !password) {
+      return alert("dau buoi ");
+    }
     dispatch(loginInitial(email, password));
   };
   const handleChange = (e) => {
@@ -37,49 +29,38 @@ const Login = () => {
       history.push("/");
     }
   }, [current]);
-
   return (
     <>
       <form
         actions=""
         className="sign-in-form form-main"
-        onSubmit={handleSubmit(handleSubmitForm)}
+        onSubmit={handleSubmit}
       >
         <h2 className="title">Sign in</h2>
         <LoginGoogleFb />
         <div className="input-field">
           <i className="fas fa-user" />
           <input
-            {...register("email", {
-              required: true,
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
-            })}
             type="text"
+            placeholder="Email Address"
             name="email"
+            id="email"
             value={email}
             onChange={handleChange}
-            placeholder="Email Address"
           />
         </div>
-        <span style={{ color: "red" }}>
-          {errors.email?.type === "required" && "Mời bạn nhập Email đầy đủ! "}
-          {errors?.email?.type === "pattern" && "Email của ban không hợp lệ!"}
-        </span>
+        <h1>mk khong dung roi </h1>
         <div className="input-field">
           <i className="fas fa-lock" />
           <input
-            {...register("password", { required: true })}
-            value={password}
-            onChange={handleChange}
             type="password"
             placeholder="Password"
             name="password"
+            id="password"
+            value={password}
+            onChange={handleChange}
           />
         </div>
-        <span style={{ color: "red" }}>
-          {errors.password?.type === "required" &&
-            "Mời bạn nhập đầy đủ mật khẩu. "}
-        </span>
         <input
           type="submit"
           defaultValue="Login"

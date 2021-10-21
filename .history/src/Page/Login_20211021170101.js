@@ -29,8 +29,9 @@ const Login = () => {
     dispatch(loginInitial(email, password));
   };
   const handleChange = (e) => {
-    let { name, value } = e.target;
-    setState({ ...state, [name]: value });
+    // let { name, value } = e.target;
+    // setState({ ...state, [name]: value });
+    setState({ ...state, [e.target.name]: e.target.value });
   };
   useEffect(() => {
     if (current) {
@@ -50,15 +51,19 @@ const Login = () => {
         <div className="input-field">
           <i className="fas fa-user" />
           <input
-            {...register("email", {
-              required: true,
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+            ref={register({
+              required: {
+                value: true,
+                message: "Email is reqired",
+              },
+              pattern: {
+                value: /^\S+@\S+$/i,
+                message: "Entered value does not match email format",
+              },
             })}
             type="text"
-            name="email"
-            value={email}
-            onChange={handleChange}
             placeholder="Email Address"
+            name="email"
           />
         </div>
         <span style={{ color: "red" }}>

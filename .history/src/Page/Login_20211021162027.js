@@ -10,7 +10,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [a, setA] = useState("");
   const { email, password } = state;
   const {
     register,
@@ -52,13 +51,13 @@ const Login = () => {
           <input
             {...register("email", {
               required: true,
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+              pattern: /^\S+@\S+$/i,
             })}
+            onChange={handleChange}
             type="text"
+            placeholder="Email Address"
             name="email"
             value={email}
-            onChange={handleChange}
-            placeholder="Email Address"
           />
         </div>
         <span style={{ color: "red" }}>
@@ -68,12 +67,12 @@ const Login = () => {
         <div className="input-field">
           <i className="fas fa-lock" />
           <input
-            {...register("password", { required: true })}
-            value={password}
-            onChange={handleChange}
+            {...register("password", { required: true }),}
             type="password"
             placeholder="Password"
             name="password"
+            value={password}
+            onChange={handleChange}
           />
         </div>
         <span style={{ color: "red" }}>

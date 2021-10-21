@@ -55,10 +55,10 @@ const Login = () => {
               pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
             })}
             type="text"
+            // placeholder="Email Address"
             name="email"
             value={email}
             onChange={handleChange}
-            placeholder="Email Address"
           />
         </div>
         <span style={{ color: "red" }}>
@@ -67,14 +67,14 @@ const Login = () => {
         </span>
         <div className="input-field">
           <i className="fas fa-lock" />
-          <input
+          {/* <input
             {...register("password", { required: true })}
             value={password}
             onChange={handleChange}
             type="password"
             placeholder="Password"
             name="password"
-          />
+          /> */}
         </div>
         <span style={{ color: "red" }}>
           {errors.password?.type === "required" &&

@@ -29,8 +29,9 @@ const Login = () => {
     dispatch(loginInitial(email, password));
   };
   const handleChange = (e) => {
-    let { name, value } = e.target;
-    setState({ ...state, [name]: value });
+    // let { name, value } = e.target;
+    // setA({ ...state, [name]: value });
+    setA(e.target.value);
   };
   useEffect(() => {
     if (current) {
@@ -54,11 +55,11 @@ const Login = () => {
               required: true,
               pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
             })}
-            type="text"
-            name="email"
-            value={email}
             onChange={handleChange}
+            type="text"
             placeholder="Email Address"
+            name="email"
+            value={a}
           />
         </div>
         <span style={{ color: "red" }}>
@@ -69,7 +70,7 @@ const Login = () => {
           <i className="fas fa-lock" />
           <input
             {...register("password", { required: true })}
-            value={password}
+            value={a}
             onChange={handleChange}
             type="password"
             placeholder="Password"

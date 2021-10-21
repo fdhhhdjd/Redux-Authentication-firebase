@@ -12,12 +12,7 @@ const Login = () => {
   });
   const [a, setA] = useState("");
   const { email, password } = state;
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    watch,
-  } = useForm();
+  const { register, errors, handleSubmit, watch } = useForm();
   const passwords = useRef({});
   passwords.current = watch("password", "");
   const history = useHistory();
@@ -50,15 +45,28 @@ const Login = () => {
         <div className="input-field">
           <i className="fas fa-user" />
           <input
-            {...register("email", {
-              required: true,
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+            // {...register("email", {
+            //   required: true,
+            //   pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+            //   onChange: {
+            //     handleChange,
+            //   },
+            // })}
+            {...register({
+              required: {
+                value: true,
+                message: "Email is reqired",
+              },
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Entered value does not match email format",
+              },
             })}
             type="text"
+            placeholder="Email Address"
             name="email"
             value={email}
             onChange={handleChange}
-            placeholder="Email Address"
           />
         </div>
         <span style={{ color: "red" }}>

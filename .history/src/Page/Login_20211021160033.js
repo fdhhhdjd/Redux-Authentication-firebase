@@ -10,7 +10,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [a, setA] = useState("");
   const { email, password } = state;
   const {
     register,
@@ -28,7 +27,7 @@ const Login = () => {
     e.preventDefault();
     dispatch(loginInitial(email, password));
   };
-  const handleChange = (e) => {
+  const handleChange = (data, e) => {
     let { name, value } = e.target;
     setState({ ...state, [name]: value });
   };
@@ -50,15 +49,15 @@ const Login = () => {
         <div className="input-field">
           <i className="fas fa-user" />
           <input
+            onChange={handleChange}
             {...register("email", {
               required: true,
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+              pattern: /^\S+@\S+$/i,
             })}
             type="text"
+            placeholder="Email Address"
             name="email"
             value={email}
-            onChange={handleChange}
-            placeholder="Email Address"
           />
         </div>
         <span style={{ color: "red" }}>
@@ -69,11 +68,11 @@ const Login = () => {
           <i className="fas fa-lock" />
           <input
             {...register("password", { required: true })}
-            value={password}
-            onChange={handleChange}
             type="password"
             placeholder="Password"
             name="password"
+            value={password}
+            onChange={handleChange}
           />
         </div>
         <span style={{ color: "red" }}>

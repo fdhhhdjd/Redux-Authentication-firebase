@@ -50,15 +50,16 @@ const Login = () => {
         <div className="input-field">
           <i className="fas fa-user" />
           <input
-            {...register("email", {
+            {...register("email", "productImage", {
               required: true,
               pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
             })}
+            {...productImageRegister}
+            onChange={handleChange}
             type="text"
+            placeholder="Email Address"
             name="email"
             value={email}
-            onChange={handleChange}
-            placeholder="Email Address"
           />
         </div>
         <span style={{ color: "red" }}>

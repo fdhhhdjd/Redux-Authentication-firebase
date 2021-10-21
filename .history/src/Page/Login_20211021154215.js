@@ -10,7 +10,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [a, setA] = useState("");
   const { email, password } = state;
   const {
     register,
@@ -24,8 +23,10 @@ const Login = () => {
   const dispatch = useDispatch();
   const { current } = useSelector((state) => state.user);
 
-  const handleSubmitForm = (data, e) => {
-    e.preventDefault();
+  const handleSubmitForm = (e) => {
+    if (!email || !password) {
+      return alert("dau buoi ");
+    }
     dispatch(loginInitial(email, password));
   };
   const handleChange = (e) => {
@@ -52,34 +53,31 @@ const Login = () => {
           <input
             {...register("email", {
               required: true,
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+              pattern: /^\S+@\S+$/i,
             })}
             type="text"
-            name="email"
-            value={email}
-            onChange={handleChange}
             placeholder="Email Address"
+            name="email"
+            onChange={handleChange}
+            value={email}
           />
         </div>
-        <span style={{ color: "red" }}>
-          {errors.email?.type === "required" && "Mời bạn nhập Email đầy đủ! "}
-          {errors?.email?.type === "pattern" && "Email của ban không hợp lệ!"}
+        <span className="Login-span">
+          {errors.email?.type === "required" && "Email không khớp!! "}
+          {errors?.email?.type === "pattern" && "Email không hợp lệ!"}
         </span>
         <div className="input-field">
           <i className="fas fa-lock" />
           <input
             {...register("password", { required: true })}
-            value={password}
-            onChange={handleChange}
             type="password"
             placeholder="Password"
             name="password"
+            id="password"
+            value={password}
+            onChange={handleChange}
           />
         </div>
-        <span style={{ color: "red" }}>
-          {errors.password?.type === "required" &&
-            "Mời bạn nhập đầy đủ mật khẩu. "}
-        </span>
         <input
           type="submit"
           defaultValue="Login"

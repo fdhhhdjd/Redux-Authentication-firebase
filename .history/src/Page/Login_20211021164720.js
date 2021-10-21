@@ -53,12 +53,14 @@ const Login = () => {
             {...register("email", {
               required: true,
               pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+              onChange: (e) => {
+                handleChange;
+              },
             })}
             type="text"
+            placeholder="Email Address"
             name="email"
             value={email}
-            onChange={handleChange}
-            placeholder="Email Address"
           />
         </div>
         <span style={{ color: "red" }}>

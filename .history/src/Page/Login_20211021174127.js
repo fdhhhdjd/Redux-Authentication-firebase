@@ -70,7 +70,7 @@ const Login = () => {
           <input
             {...register("password", { required: true })}
             value={password}
-            onChange={handleChange}
+            onChange={(e) => setState(e.target.name)}
             type="password"
             placeholder="Password"
             name="password"

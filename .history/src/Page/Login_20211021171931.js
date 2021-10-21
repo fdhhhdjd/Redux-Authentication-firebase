@@ -50,31 +50,43 @@ const Login = () => {
         <div className="input-field">
           <i className="fas fa-user" />
           <input
-            {...register("email", {
-              required: true,
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+            // {...register("email", {
+            //   required: true,
+            //   pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+            //   onChange: {
+            //     handleChange,
+            //   },
+            // })}
+            {...register({
+              required: {
+                value: true,
+                message: "Email is reqired",
+              },
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Entered value does not match email format",
+              },
             })}
             type="text"
+            placeholder="Email Address"
             name="email"
             value={email}
             onChange={handleChange}
-            placeholder="Email Address"
           />
         </div>
         <span style={{ color: "red" }}>
-          {errors.email?.type === "required" && "Mời bạn nhập Email đầy đủ! "}
-          {errors?.email?.type === "pattern" && "Email của ban không hợp lệ!"}
+          {errors.email ? <span>{errors.email.message}</span> : null}
         </span>
         <div className="input-field">
           <i className="fas fa-lock" />
-          <input
+          {/* <input
             {...register("password", { required: true })}
             value={password}
             onChange={handleChange}
             type="password"
             placeholder="Password"
             name="password"
-          />
+          /> */}
         </div>
         <span style={{ color: "red" }}>
           {errors.password?.type === "required" &&

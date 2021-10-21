@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { loginInitial } from "../Redux/Actions";
@@ -10,22 +10,21 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [a, setA] = useState("");
   const { email, password } = state;
   const {
     register,
     formState: { errors },
-    handleSubmit,
     watch,
   } = useForm();
-  const passwords = useRef({});
-  passwords.current = watch("password", "");
   const history = useHistory();
   const dispatch = useDispatch();
   const { current } = useSelector((state) => state.user);
 
-  const handleSubmitForm = (data, e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    if (!email || !password) {
+      return alert("dau buoi ");
+    }
     dispatch(loginInitial(email, password));
   };
   const handleChange = (e) => {
@@ -43,43 +42,40 @@ const Login = () => {
       <form
         actions=""
         className="sign-in-form form-main"
-        onSubmit={handleSubmit(handleSubmitForm)}
+        onSubmit={handleSubmit}
       >
         <h2 className="title">Sign in</h2>
         <LoginGoogleFb />
         <div className="input-field">
           <i className="fas fa-user" />
           <input
+            type="text"
+            placeholder="Email Address"
+            name="email"
+            id="email"
+            value={email}
+            // onChange={handleChange}
             {...register("email", {
               required: true,
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+              pattern: /^\S+@\S+$/i,
             })}
-            type="text"
-            name="email"
-            value={email}
-            onChange={handleChange}
-            placeholder="Email Address"
           />
         </div>
-        <span style={{ color: "red" }}>
-          {errors.email?.type === "required" && "Mời bạn nhập Email đầy đủ! "}
-          {errors?.email?.type === "pattern" && "Email của ban không hợp lệ!"}
+        <span className="Login-span">
+          {errors.email?.type === "required" && "Email account mismatch "}
+          {errors?.email?.type === "pattern" && "Email Invalid"}
         </span>
         <div className="input-field">
           <i className="fas fa-lock" />
           <input
-            {...register("password", { required: true })}
-            value={password}
-            onChange={handleChange}
             type="password"
             placeholder="Password"
             name="password"
+            id="password"
+            value={password}
+            onChange={handleChange}
           />
         </div>
-        <span style={{ color: "red" }}>
-          {errors.password?.type === "required" &&
-            "Mời bạn nhập đầy đủ mật khẩu. "}
-        </span>
         <input
           type="submit"
           defaultValue="Login"

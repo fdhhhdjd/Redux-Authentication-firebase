@@ -4,19 +4,19 @@ import { Link, useHistory } from "react-router-dom";
 import { loginInitial } from "../Redux/Actions";
 import "../Styles/authentication.css";
 import LoginGoogleFb from "./LoginGoogleFb";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 const Login = () => {
   const [state, setState] = useState({
     email: "",
     password: "",
   });
-  const [a, setA] = useState("");
   const { email, password } = state;
   const {
     register,
     formState: { errors },
     handleSubmit,
     watch,
+    control,
   } = useForm();
   const passwords = useRef({});
   passwords.current = watch("password", "");
@@ -60,6 +60,17 @@ const Login = () => {
             onChange={handleChange}
             placeholder="Email Address"
           />
+          <Controller
+            control={control}
+            name="ReactDatepicker"
+            render={({ field: { onChange, onBlur, value, ref } }) => (
+              <ReactDatePicker
+                onChange={onChange}
+                onBlur={onBlur}
+                selected={value}
+              />
+            )}
+          />
         </div>
         <span style={{ color: "red" }}>
           {errors.email?.type === "required" && "Mời bạn nhập Email đầy đủ! "}
@@ -67,14 +78,14 @@ const Login = () => {
         </span>
         <div className="input-field">
           <i className="fas fa-lock" />
-          <input
+          {/* <input
             {...register("password", { required: true })}
             value={password}
             onChange={handleChange}
             type="password"
             placeholder="Password"
             name="password"
-          />
+          /> */}
         </div>
         <span style={{ color: "red" }}>
           {errors.password?.type === "required" &&

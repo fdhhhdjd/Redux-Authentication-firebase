@@ -10,12 +10,12 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [a, setA] = useState("");
   const { email, password } = state;
   const {
     register,
     formState: { errors },
     handleSubmit,
+
     watch,
   } = useForm();
   const passwords = useRef({});
@@ -52,13 +52,13 @@ const Login = () => {
           <input
             {...register("email", {
               required: true,
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+              pattern: /^\S+@\S+$/i,
             })}
             type="text"
-            name="email"
-            value={email}
-            onChange={handleChange}
             placeholder="Email Address"
+            name="emaill"
+            onChange={handleChange}
+            value={email}
           />
         </div>
         <span style={{ color: "red" }}>
@@ -69,11 +69,11 @@ const Login = () => {
           <i className="fas fa-lock" />
           <input
             {...register("password", { required: true })}
-            value={password}
-            onChange={handleChange}
             type="password"
             placeholder="Password"
             name="password"
+            value={password}
+            onChange={handleChange}
           />
         </div>
         <span style={{ color: "red" }}>

@@ -10,7 +10,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [a, setA] = useState("");
+  const [a, setState] = useState("");
   const { email, password } = state;
   const {
     register,
@@ -54,11 +54,11 @@ const Login = () => {
               required: true,
               pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
             })}
+            onChange={handleChange}
             type="text"
+            placeholder="Email Address"
             name="email"
             value={email}
-            onChange={handleChange}
-            placeholder="Email Address"
           />
         </div>
         <span style={{ color: "red" }}>

@@ -29,8 +29,10 @@ const Login = () => {
     dispatch(loginInitial(email, password));
   };
   const handleChange = (e) => {
-    let { name, value } = e.target;
-    setState({ ...state, [name]: value });
+    // let { name, value } = e.target;
+    // setState({ ...state, [name]: value });
+
+    setState({ ...state, [e.target.name]: e.target.value });
   };
   useEffect(() => {
     if (current) {
@@ -49,16 +51,33 @@ const Login = () => {
         <LoginGoogleFb />
         <div className="input-field">
           <i className="fas fa-user" />
-          <input
+          {/* <input
             {...register("email", {
               required: true,
               pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+              onChange: {
+                handleChange,
+              },
+            })}
+            type="text"
+            placeholder="Email Address"
+            name="email"
+          /> */}
+          <input
+            ref={register({
+              required: {
+                value: true,
+                message: "Email is reqired",
+              },
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Entered value does not match email format",
+              },
             })}
             type="text"
             name="email"
-            value={email}
+            value={form.email}
             onChange={handleChange}
-            placeholder="Email Address"
           />
         </div>
         <span style={{ color: "red" }}>
@@ -67,6 +86,14 @@ const Login = () => {
         </span>
         <div className="input-field">
           <i className="fas fa-lock" />
+          {/* <input
+            {...register("password", { required: true })}
+            value={password}
+            onChange={handleChange}
+            type="password"
+            placeholder="Password"
+            name="password"
+          /> */}
           <input
             {...register("password", { required: true })}
             value={password}

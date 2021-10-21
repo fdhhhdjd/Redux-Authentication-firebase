@@ -50,9 +50,15 @@ const Login = () => {
         <div className="input-field">
           <i className="fas fa-user" />
           <input
-            {...register("email", {
-              required: true,
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+            {...register({
+              required: {
+                value: true,
+                message: "Email is reqired",
+              },
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Entered value does not match email format",
+              },
             })}
             type="text"
             name="email"
@@ -67,14 +73,14 @@ const Login = () => {
         </span>
         <div className="input-field">
           <i className="fas fa-lock" />
-          <input
+          {/* <input
             {...register("password", { required: true })}
             value={password}
             onChange={handleChange}
             type="password"
             placeholder="Password"
             name="password"
-          />
+          /> */}
         </div>
         <span style={{ color: "red" }}>
           {errors.password?.type === "required" &&

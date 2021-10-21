@@ -10,7 +10,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [a, setA] = useState("");
   const { email, password } = state;
   const {
     register,
@@ -52,28 +51,28 @@ const Login = () => {
           <input
             {...register("email", {
               required: true,
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+              pattern: /^\S+@\S+$/i,
             })}
             type="text"
-            name="email"
-            value={email}
-            onChange={handleChange}
             placeholder="Email Address"
+            name="email"
+            onChange={handleChange}
+            value={email}
           />
         </div>
         <span style={{ color: "red" }}>
-          {errors.email?.type === "required" && "Mời bạn nhập Email đầy đủ! "}
+          {errors.email?.type === "required" && "Mời bạn nhập Email đầu đủ! "}
           {errors?.email?.type === "pattern" && "Email của ban không hợp lệ!"}
         </span>
         <div className="input-field">
           <i className="fas fa-lock" />
           <input
             {...register("password", { required: true })}
-            value={password}
-            onChange={handleChange}
             type="password"
             placeholder="Password"
             name="password"
+            value={password}
+            onChange={handleChange}
           />
         </div>
         <span style={{ color: "red" }}>

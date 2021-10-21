@@ -68,9 +68,11 @@ const Login = () => {
         <div className="input-field">
           <i className="fas fa-lock" />
           <input
-            {...register("password", { required: true })}
+            {...register("password", {
+              required: true,
+              onChange: { handleChange },
+            })}
             value={password}
-            onChange={handleChange}
             type="password"
             placeholder="Password"
             name="password"
