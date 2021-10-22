@@ -46,11 +46,13 @@ const Login = () => {
         onSubmit={handleSubmit(handleSubmitForm)}
       >
         <h2 className="title">Sign in</h2>
-        <div className="loginGoogleFb">
-          <div className="login_google">
+        <div>
+          <div>
+            {" "}
             <LoginGoogleFb />
           </div>
-          <div className="login_google">
+          <div>
+            {" "}
             <LoginFacebook />
           </div>
         </div>

@@ -50,7 +50,7 @@ const Login = () => {
           <div className="login_google">
             <LoginGoogleFb />
           </div>
-          <div className="login_google">
+          <div className="login_facebook">
             <LoginFacebook />
           </div>
         </div>

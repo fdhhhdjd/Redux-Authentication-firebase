@@ -266,14 +266,8 @@
     pointer-events: all;
   }
   .loginGoogleFb{
-    display: flex;
-    flex-direction: row;
+    display: inline-block;
   }
-  .login_google+.login_google{
-    margin-left: 1rem;
-  }
-
-
   @media (max-width: 870px) {
     .container1 {
       min-height: 800px;

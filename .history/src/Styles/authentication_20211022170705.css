@@ -269,10 +269,6 @@
     display: flex;
     flex-direction: row;
   }
-  .login_google+.login_google{
-    margin-left: 1rem;
-  }
-
 
   @media (max-width: 870px) {
     .container1 {
