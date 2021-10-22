@@ -17,8 +17,10 @@ const Home = () => {
     <>
       <Navbar />
       <div className="App">
-        <h1>home</h1>
-        <h3>hi,{current.displayName}</h3>
+        <h1>
+          hi,<p>{current.displayName}</p>
+        </h1>
+
         <button className="btn btn-danger" onClick={handleLogout}>
           Logout
         </button>

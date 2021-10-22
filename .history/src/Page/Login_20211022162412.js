@@ -4,8 +4,8 @@ import { Link, useHistory } from "react-router-dom";
 import { loginInitial } from "../Redux/Actions";
 import "../Styles/authentication.css";
 import LoginGoogleFb from "../Components/LoginGoogleFb";
-import LoginFacebook from "../Components/LoginFacebook";
 import { useForm } from "react-hook-form";
+import loginFacebook from "../Components/loginFacebook";
 const Login = () => {
   const [state, setState] = useState({
     email: "",
@@ -47,7 +47,7 @@ const Login = () => {
       >
         <h2 className="title">Sign in</h2>
         <LoginGoogleFb />
-        <LoginFacebook />
+        <loginFacebook />
         <div className="input-field">
           <i className="fas fa-user" />
           <input

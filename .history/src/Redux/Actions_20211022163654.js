@@ -113,7 +113,7 @@ export const loginFacebookInitial = () => {
   return function (dispatch) {
     dispatch(facebookStart());
     auth
-      .signInWithPopup(facebookAuthProvider.addScope("user_birthday,email"))
+      .signInWithPopup(facebookAuthProvider)
       .then(({ user }) => {
         dispatch(facebookSuccess(user));
       })

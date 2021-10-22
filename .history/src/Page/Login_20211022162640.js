@@ -47,7 +47,7 @@ const Login = () => {
       >
         <h2 className="title">Sign in</h2>
         <LoginGoogleFb />
-        <LoginFacebook />
+        <loginFacebook />
         <div className="input-field">
           <i className="fas fa-user" />
           <input
