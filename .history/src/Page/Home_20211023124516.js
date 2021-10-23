@@ -33,9 +33,6 @@ const Home = () => {
       } else {
         setData({});
       }
-      return () => {
-        setData({});
-      };
     });
   };
   const filterData = (value) => {};

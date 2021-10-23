@@ -1,7 +1,6 @@
 import React from "react";
 import Lottie from "react-lottie";
 import * as code from "../Json/code.json";
-import "../Styles/authentication.css";
 const defaultOptions = {
   loop: true,
   autoplay: true,
@@ -14,7 +13,7 @@ const defaultOptions = {
 const Forget = () => {
   return (
     <>
-      <div className="container1">
+      <div className="container">
         <div className="forms-container">
           <div className="signin-signup">
             <form className="sign-in-form">
@@ -39,7 +38,7 @@ const Forget = () => {
               <p>You forgot the password? do not worry, I will help you now.</p>
             </div>
             <div className="image">
-              <Lottie options={defaultOptions} />
+              {/* <Lottie options={defaultOptions} /> */}
             </div>
           </div>
         </div>

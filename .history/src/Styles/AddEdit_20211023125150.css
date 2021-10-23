@@ -1,4 +1,7 @@
-.select {
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -8,7 +11,7 @@
   box-sizing: border-box;
 }
 
-.submit {
+input[type="submit"] {
   width: 100%;
   background-color: #4caf50;
   color: white;
@@ -19,6 +22,6 @@
   cursor: pointer;
 }
 
-.submit:hover {
+input[type="submit"]:hover {
   background-color: #45a049;
 }

@@ -14,7 +14,7 @@ const defaultOptions = {
 const Forget = () => {
   return (
     <>
-      <div className="container1">
+      <div className="container">
         <div className="forms-container">
           <div className="signin-signup">
             <form className="sign-in-form">

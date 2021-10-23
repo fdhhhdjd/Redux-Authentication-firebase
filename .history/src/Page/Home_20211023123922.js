@@ -12,32 +12,8 @@ const Home = () => {
   const [sort, setSort] = useState(false);
   const dispatch = useDispatch();
   const { current } = useSelector((state) => state.user);
-  const handleChange = (e) => {
-    setSort(true);
-    firebaseDB
-      .child("contacts")
-      .orderByChild(`${e.target.value}`)
-      .on("value", (snapshot) => {
-        let value = [];
-        snapshot.forEach((snap) => {
-          value.push(snap.val());
-        });
-        setSortedData(value);
-      });
-  };
-  const handleReset = () => {
-    setSort(false);
-    firebaseDB.child("contacts").on("value", (snapshot) => {
-      if (snapshot.val() !== null) {
-        setData({ ...snapshot.val() });
-      } else {
-        setData({});
-      }
-      return () => {
-        setData({});
-      };
-    });
-  };
+  const handleChange = () => {};
+  const handleReset = () => {};
   const filterData = (value) => {};
   const onDelete = (id) => {
     if (window.confirm("Are you sure you want to delete ?")) {
@@ -79,35 +55,35 @@ const Home = () => {
               {!sort && <td style={{ textAlign: "center" }}>Action</td>}
             </tr>
           </thead>
-          {!sort && (
-            <tbody>
-              {Object.keys(data).map((id, index) => {
-                return (
-                  <tr key={index}>
-                    <th scope="row">{index + 1}</th>
-                    <td>{data[id].name}</td>
-                    <td>{data[id].email}</td>
-                    <td>{data[id].contact}</td>
-                    <td>{data[id].status}</td>
-                    <td>
-                      <Link to={`/update/${id}`}>
-                        <button className="bttn btn-edit">Edit</button>
-                      </Link>
-                      <button
-                        className="bttn btn-delete"
-                        onClick={() => onDelete(id)}
-                      >
-                        Delete
-                      </button>
-                      <Link to={`/view/${id}`}>
-                        <button className="bttn btn-view">View</button>
-                      </Link>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          )}
+          {/* {!sort && ( */}
+          <tbody>
+            {Object.keys(data).map((id, index) => {
+              return (
+                <tr key={index}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{data[id].name}</td>
+                  <td>{data[id].email}</td>
+                  <td>{data[id].contact}</td>
+                  <td>{data[id].status}</td>
+                  <td>
+                    <Link to={`/update/${id}`}>
+                      <button className="bttn btn-edit">Edit</button>
+                    </Link>
+                    <button
+                      className="bttn btn-delete"
+                      onClick={() => onDelete(id)}
+                    >
+                      Delete
+                    </button>
+                    <Link to={`/view/${id}`}>
+                      <button className="bttn btn-view">View</button>
+                    </Link>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+          {/* )} */}
           {sort && (
             <tbody>
               {sortedData.map((id, index) => {

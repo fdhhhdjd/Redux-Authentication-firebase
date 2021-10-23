@@ -89,7 +89,6 @@ const AddEdit = () => {
               placeholder="Your Name..."
               value={name || ""}
               onChange={handleChange}
-              className="select"
             />
             <label htmlFor="name">Email 📧</label>
             <input
@@ -99,7 +98,6 @@ const AddEdit = () => {
               placeholder="Your Email..."
               value={email || ""}
               onChange={handleChange}
-              className="select"
             />
             <label htmlFor="name">Contact Phone ☎️</label>
             <input
@@ -109,7 +107,6 @@ const AddEdit = () => {
               placeholder="Your Contact Number..."
               value={contact || ""}
               onChange={handleChange}
-              className="select"
             />
             <label htmlFor="name">Status 🛑 </label>
             <input

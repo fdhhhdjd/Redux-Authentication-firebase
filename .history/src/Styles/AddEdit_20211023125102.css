@@ -1,3 +1,6 @@
+input[type="text"],
+input[type="email"],
+input[type="number"],
 .select {
   width: 100%;
   padding: 12px 20px;
@@ -19,6 +22,6 @@
   cursor: pointer;
 }
 
-.submit:hover {
+input[type="submit"]:hover {
   background-color: #45a049;
 }

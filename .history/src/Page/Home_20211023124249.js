@@ -25,19 +25,7 @@ const Home = () => {
         setSortedData(value);
       });
   };
-  const handleReset = () => {
-    setSort(false);
-    firebaseDB.child("contacts").on("value", (snapshot) => {
-      if (snapshot.val() !== null) {
-        setData({ ...snapshot.val() });
-      } else {
-        setData({});
-      }
-      return () => {
-        setData({});
-      };
-    });
-  };
+  const handleReset = () => {};
   const filterData = (value) => {};
   const onDelete = (id) => {
     if (window.confirm("Are you sure you want to delete ?")) {

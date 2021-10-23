@@ -15,7 +15,7 @@ const Forget = () => {
   return (
     <>
       <div className="container1">
-        <div className="forms-container">
+        <div className="forms-container1">
           <div className="signin-signup">
             <form className="sign-in-form">
               <h2 className="title">Reset Password</h2>
