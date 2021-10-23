@@ -127,16 +127,22 @@ const AddEdit = () => {
             />
             <input
               type="submit"
-              value="Clear"
-              className="clear"
-              onClick={clearAll}
-            />
-            <input
-              type="submit"
               value={id ? "Update" : "Save"}
               className="submit"
             />
           </form>
+          <input
+            type="submit"
+            value="Clear"
+            className="submit"
+            onClick={clearAll}
+            style={{
+              margin: "auto",
+              padding: "15px",
+              maxWidth: "400px",
+              alignContent: "center",
+            }}
+          />
         </div>
       </div>
     </>

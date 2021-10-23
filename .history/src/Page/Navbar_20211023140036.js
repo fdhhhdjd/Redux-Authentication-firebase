@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../Styles/Navbar.css";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutInitial } from "../Redux/Actions";
 const Navbar = () => {
@@ -8,9 +8,13 @@ const Navbar = () => {
   const [search, setSearch] = useState("");
   const InputEl = useRef();
   const location = useLocation();
-  const history = useHistory();
   const { current } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history.push(`/search?name=${search}`);
+    setSearch("");
+  };
   const handleLogout = (user) => {
     user.preventDefault();
     if (window.confirm("Are you sure you want to log out ?")) {
@@ -33,11 +37,6 @@ const Navbar = () => {
       setActiveTab("Login");
     }
   }, [location]);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    history.push(`/search?name=${search}`);
-    setSearch("");
-  };
 
   return (
     <>

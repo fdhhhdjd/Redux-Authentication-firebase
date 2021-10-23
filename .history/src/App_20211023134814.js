@@ -13,7 +13,6 @@ import {
   AddEdit,
   NotFound,
   View,
-  Search,
 } from "./import";
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "./utils/Firebase";

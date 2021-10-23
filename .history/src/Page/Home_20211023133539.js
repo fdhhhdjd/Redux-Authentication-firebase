@@ -7,8 +7,10 @@ import { db as firebaseDB } from "../utils/Firebase";
 import { Link } from "react-router-dom";
 const Home = () => {
   const [data, setData] = useState({});
+
   const [sortedData, setSortedData] = useState([]);
   const [sort, setSort] = useState(false);
+  const dispatch = useDispatch();
   const { current } = useSelector((state) => state.user);
   const handleChange = (e) => {
     setSort(true);
@@ -36,19 +38,7 @@ const Home = () => {
       };
     });
   };
-  const filterData = (value) => {
-    firebaseDB
-      .child("contacts")
-      .orderByChild("status")
-      .equalTo(value)
-      .on("value", (snapshot) => {
-        if (snapshot.val !== null) {
-          setData({ ...snapshot.val() });
-        } else {
-          setData({});
-        }
-      });
-  };
+  const filterData = (value) => {};
   const onDelete = (id) => {
     if (window.confirm("Are you sure you want to delete ?")) {
       firebaseDB.child(`contacts/${id}`).remove((error) => {
@@ -89,7 +79,7 @@ const Home = () => {
               <td style={{ textAlign: "center" }}>Email</td>
               <td style={{ textAlign: "center" }}>Contact</td>
               <td style={{ textAlign: "center" }}>Status</td>
-              {!sort && <td style={{ textAlign: "center" }}>Action</td>}
+              {/* {!sort && <td style={{ textAlign: "center" }}>Action</td>} */}
             </tr>
           </thead>
           {!sort && (

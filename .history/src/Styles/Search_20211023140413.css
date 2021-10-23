@@ -55,30 +55,7 @@
   background-color: #e7e7e7;
   color: black;
 }
-
-.dropdown{
-  width: 20%;
-  margin:5px;
-}
-.btn1-reset{
-  background-color: darkorange;
-  color: black;
-}
-.btn1-active{
-  background-color:#808c4a;
+.btn-search1{
   color: white;
-  margin-left: 1rem;
-}
-.btn1-inactive{
-  background-color:black;
-  color: white;
-}
-.btn1-active+.btn1-inactive{
-  margin-left: 1rem;
-}
-.SortMain{
-  text-align: center;
-}
-.btn1-reset+.btn1-reset{
-  margin-left: 1rem;
+  background-color: #008cba
 }

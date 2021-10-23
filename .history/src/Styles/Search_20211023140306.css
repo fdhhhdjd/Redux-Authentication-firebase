@@ -79,6 +79,7 @@
 .SortMain{
   text-align: center;
 }
-.btn1-reset+.btn1-reset{
-  margin-left: 1rem;
+.btn-search1{
+  color: white;
+  background-color: #008cba
 }

@@ -70,6 +70,7 @@ const AddEdit = () => {
   const clearAll = () => {
     setState({});
     setData("");
+    loadData();
   };
   return (
     <>
@@ -127,15 +128,10 @@ const AddEdit = () => {
             />
             <input
               type="submit"
-              value="Clear"
-              className="clear"
-              onClick={clearAll}
-            />
-            <input
-              type="submit"
               value={id ? "Update" : "Save"}
               className="submit"
             />
+            <input type="submit" value="Clear" className="submit" />
           </form>
         </div>
       </div>

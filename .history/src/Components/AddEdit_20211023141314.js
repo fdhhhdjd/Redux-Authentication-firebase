@@ -127,14 +127,14 @@ const AddEdit = () => {
             />
             <input
               type="submit"
-              value="Clear"
-              className="clear"
-              onClick={clearAll}
+              value={id ? "Update" : "Save"}
+              className="submit"
             />
             <input
               type="submit"
-              value={id ? "Update" : "Save"}
-              className="submit"
+              value="Clear"
+              className="clear"
+              onClick={clearAll}
             />
           </form>
         </div>

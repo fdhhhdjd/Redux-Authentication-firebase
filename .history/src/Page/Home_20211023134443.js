@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../Styles/Home.css";
 import Navbar from "./Navbar";
@@ -63,6 +64,12 @@ const Home = () => {
   const refetchAll = () => {
     window.location.reload();
   };
+  const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  };
+  let query = useQuery();
+  let search = query.get("name"); //!được chỉ định theo tên
+  console.log(search);
   useEffect(() => {
     firebaseDB.child("contacts").on("value", (snapshot) => {
       if (snapshot.val() !== null) {

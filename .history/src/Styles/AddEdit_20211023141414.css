@@ -11,7 +11,7 @@
 .submit {
   width: 100%;
   background-color: #4caf50;
-  color: black;
+  color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
@@ -19,7 +19,7 @@
   cursor: pointer;
 }
 .clear{
-background-color:#ccc;
+background-color:lightblue;
 width: 100%;
 color:back;
 padding: 14px 20px;

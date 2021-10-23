@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../Styles/Navbar.css";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutInitial } from "../Redux/Actions";
 const Navbar = () => {
@@ -8,7 +8,6 @@ const Navbar = () => {
   const [search, setSearch] = useState("");
   const InputEl = useRef();
   const location = useLocation();
-  const history = useHistory();
   const { current } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const handleLogout = (user) => {
@@ -38,7 +37,6 @@ const Navbar = () => {
     history.push(`/search?name=${search}`);
     setSearch("");
   };
-
   return (
     <>
       <div className="header">

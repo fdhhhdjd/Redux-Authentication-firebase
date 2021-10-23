@@ -60,9 +60,6 @@ const Home = () => {
       });
     }
   };
-  const refetchAll = () => {
-    window.location.reload();
-  };
   useEffect(() => {
     firebaseDB.child("contacts").on("value", (snapshot) => {
       if (snapshot.val() !== null) {

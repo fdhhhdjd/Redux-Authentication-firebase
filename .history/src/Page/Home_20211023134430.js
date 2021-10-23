@@ -63,6 +63,12 @@ const Home = () => {
   const refetchAll = () => {
     window.location.reload();
   };
+  const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  };
+  let query = useQuery();
+  let search = query.get("name"); //!được chỉ định theo tên
+  console.log(search);
   useEffect(() => {
     firebaseDB.child("contacts").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
