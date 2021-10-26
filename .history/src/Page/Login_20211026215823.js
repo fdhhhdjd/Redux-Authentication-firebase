@@ -90,7 +90,7 @@ const Login = () => {
         <span style={{ color: "red" }}>
           {errors.password?.type === "required" &&
             "Mời bạn nhập đầy đủ mật khẩu. "}
-          {error && "Mật khẩu bạn nhập không chính xác "}
+          {error && "Mật khẩu không chính xác "}
         </span>
         <input type="submit" name="signin" className="btn solid" />
         <p

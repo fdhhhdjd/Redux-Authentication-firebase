@@ -22,7 +22,7 @@ const Register = () => {
   });
   const { displayName, email, password, passwordConfirm } = state;
   const dispatch = useDispatch();
-  const { current, error } = useSelector((state) => state.user);
+  const { current } = useSelector((state) => state.user);
   const history = useHistory();
   const handleSubmitForm = (data) => {
     const { displayName, email, password } = data;
@@ -83,7 +83,6 @@ const Register = () => {
         <span style={{ color: "red" }}>
           {errors.email?.type === "required" && "Mời bạn nhập Email đầy đủ! "}
           {errors?.email?.type === "pattern" && "Email của ban không hợp lệ!"}
-          {error && "Tài khoản của bạn đã có người đăng ký"}
         </span>
         <div className="input-field">
           <i className="fas fa-lock" />

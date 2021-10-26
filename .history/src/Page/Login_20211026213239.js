@@ -23,17 +23,16 @@ const Login = () => {
   passwords.current = watch("password");
   const history = useHistory();
   const dispatch = useDispatch();
-  const { current, error } = useSelector((state) => state.user);
+  const { current } = useSelector((state) => state.user);
 
-  const handleSubmitForm = (data) => {
-    const { email, password } = data;
+  const handleSubmitForm = (data, e) => {
+    e.preventDefault();
     dispatch(loginInitial(email, password));
-    console.log(data);
   };
-  // const handleChange = (e) => {
-  //   let { name, value } = e.target;
-  //   setState({ ...state, [name]: value });
-  // };
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    setState({ ...state, [name]: value });
+  };
   useEffect(() => {
     if (current) {
       history.push("/");
@@ -45,6 +44,7 @@ const Login = () => {
       <form
         className="sign-in-form form-main"
         onSubmit={handleSubmit(handleSubmitForm)}
+        initialValues={state}
       >
         <h2 className="title">Sign in</h2>
         <div className="loginGoogleFb">
@@ -67,7 +67,7 @@ const Login = () => {
             placeholder="Email Address"
             name="email"
             id="email"
-            // value={email}
+            value={email}
             // onChange={handleChange}
           />
         </div>
@@ -83,14 +83,13 @@ const Login = () => {
             placeholder="Password"
             name="password"
             id="password"
-            // value={password}
+            value={password}
             // onChange={handleChange}
           />
         </div>
         <span style={{ color: "red" }}>
           {errors.password?.type === "required" &&
             "Mời bạn nhập đầy đủ mật khẩu. "}
-          {error && "Mật khẩu bạn nhập không chính xác "}
         </span>
         <input type="submit" name="signin" className="btn solid" />
         <p

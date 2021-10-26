@@ -23,11 +23,10 @@ const Login = () => {
   passwords.current = watch("password");
   const history = useHistory();
   const dispatch = useDispatch();
-  const { current, error } = useSelector((state) => state.user);
+  const { current } = useSelector((state) => state.user);
 
   const handleSubmitForm = (data) => {
-    const { email, password } = data;
-    dispatch(loginInitial(email, password));
+    dispatch(loginInitial(data, email, password));
     console.log(data);
   };
   // const handleChange = (e) => {
@@ -90,7 +89,6 @@ const Login = () => {
         <span style={{ color: "red" }}>
           {errors.password?.type === "required" &&
             "Mời bạn nhập đầy đủ mật khẩu. "}
-          {error && "Mật khẩu bạn nhập không chính xác "}
         </span>
         <input type="submit" name="signin" className="btn solid" />
         <p

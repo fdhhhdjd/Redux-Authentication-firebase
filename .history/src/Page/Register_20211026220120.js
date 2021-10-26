@@ -83,7 +83,7 @@ const Register = () => {
         <span style={{ color: "red" }}>
           {errors.email?.type === "required" && "Mời bạn nhập Email đầy đủ! "}
           {errors?.email?.type === "pattern" && "Email của ban không hợp lệ!"}
-          {error && "Tài khoản của bạn đã có người đăng ký"}
+          {error && "Tài khoảng của bạn đã có người đăng ký"}
         </span>
         <div className="input-field">
           <i className="fas fa-lock" />

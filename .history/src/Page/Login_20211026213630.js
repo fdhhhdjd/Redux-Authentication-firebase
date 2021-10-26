@@ -23,12 +23,11 @@ const Login = () => {
   passwords.current = watch("password");
   const history = useHistory();
   const dispatch = useDispatch();
-  const { current, error } = useSelector((state) => state.user);
+  const { current } = useSelector((state) => state.user);
 
   const handleSubmitForm = (data) => {
-    const { email, password } = data;
+    // e.preventDefault();
     dispatch(loginInitial(email, password));
-    console.log(data);
   };
   // const handleChange = (e) => {
   //   let { name, value } = e.target;
@@ -59,16 +58,17 @@ const Login = () => {
         <div className="input-field">
           <i className="fas fa-user" />
           <input
-            {...register("email", {
-              required: true,
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
-            })}
+            // {...register("email", {
+            //   required: true,
+            //   pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+            // })}
             type="email"
             placeholder="Email Address"
             name="email"
             id="email"
-            // value={email}
+            value={email}
             // onChange={handleChange}
+            ref={register}
           />
         </div>
         <span style={{ color: "red" }}>
@@ -78,19 +78,19 @@ const Login = () => {
         <div className="input-field">
           <i className="fas fa-lock" />
           <input
-            {...register("password", { required: true })}
+            // {...register("password", { required: true })}
             type="password"
             placeholder="Password"
             name="password"
             id="password"
-            // value={password}
+            value={password}
             // onChange={handleChange}
+            ref={register}
           />
         </div>
         <span style={{ color: "red" }}>
           {errors.password?.type === "required" &&
             "Mời bạn nhập đầy đủ mật khẩu. "}
-          {error && "Mật khẩu bạn nhập không chính xác "}
         </span>
         <input type="submit" name="signin" className="btn solid" />
         <p
